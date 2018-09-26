@@ -1,4 +1,4 @@
-YOUR NAME and YOUR NETID
+Fritz Thelusca ft34
 
 Run WordGramDiver for wordgrams of size 2-10 and record
 the number of WordGram values/objects that occur more than
@@ -15,12 +15,13 @@ values of WSIZE
 WSIZE    # duplicates
 2        60,453
 3        10,756
-4
-5
-7
-8
-9
-10
+4		 1,987
+5		 667
+6		 362
+7		 226
+8		 151
+9		 105
+10		 73
 
 =====
 Explain in your own words the conceptual differences between 
@@ -29,11 +30,20 @@ Answer these questions:
 
 (1) Why the results of these methods should be the same in 
 terms of changes made to the HashSet parameter.
+Both the benchmark methods and the benchmarkShift methods are just two alternative options used in order to attain the desired results.
+They differ in speed of execution and memory use. 
+
 
 (2) What are the conceptual differences between the two
 benchmarking methods
+The benchmark method reads all words from a file, constructs a WordGram that is has the size WSIZE for each set of WSIZE words in the file.
+The benchmarkShift method constructs a WordGram from the first WSIZE words, and calls .shiftAdd() to the next word to add to the set until the file ends.
 
 (3) Is the total amount of memory allocated for arrays
 the same or different in the two methods? Account for
 arrays created in the methods and arrays created by
 WordGram objects. Try to be quantitative in answering.
+The total amount of memory allocated for arrays is different between the two methods. The benchmark method uses more memory because 
+it converts the string into a list and then converts it to a bunch of arrays, with each subsequent array taking more memory.
+ While the benchmarkShift method creates one object and just use the shiftAdd method to add elements to the Wordgram object. As the WSIZE increases, the  WordGram values that
+occur more than once decreases. As WSIZE increases, the total number of wordgrams created tend to decrease.
